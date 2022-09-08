@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- CSS only -->
+
     <link rel="stylesheet" href="./style//all.css" />
   </head>
   <body>
@@ -42,11 +44,18 @@
                 />
                 <span>{{item.content}}</span>
               </label>
-              <a href="#" class="delete" @click="delTodo(index)"></a>
+
+              <a
+                href="#"
+                class="delete"
+                style="background-image: url('../7Q4RjFx.jpg')"
+                @click="delTodo(index)"
+              ></a>
             </li>
           </ul>
           <div class="list_footer">
             <p><span class="todoNum"> {{todoNum}} </span> 個待完成項目</p>
+
             <a href="#" class="delebtn" @click="delAll">清除已完成項目</a>
           </div>
         </div>
@@ -58,6 +67,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!-- JavaScript Bundle with Popper -->
+
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
     <script src="./app.js"></script>
