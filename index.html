@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style//all.css" />
+  </head>
+  <body>
+    <div class="container" id="app">
+      <h1>TODO LIST</h1>
+      <div class="card input">
+        <input
+          type="text"
+          v-model="temp"
+          @keyup.enter="addTodo"
+          placeholder="請輸入待辦事項"
+        />
+        <a href="#" class="btn_add" @click="addTodo">+</a>
+      </div>
+      <div class="card card_list">
+        <ul class="tab">
+          <li :class="{active:state==='all'}" @click="switchState('all')">
+            全部
+          </li>
+          <li :class="{active:state==='todo'}" @click="switchState('todo')">
+            待完成
+          </li>
+          <li :class="{active:state==='finish'}" @click="switchState('finish')">
+            已完成
+          </li>
+        </ul>
+        <div class="cart_content">
+          <ul class="list">
+            <li v-for="(item, index) in renderData" :key="index">
+              <label class="checkbox" for="">
+                <input
+                  type="checkbox"
+                  :checked="item.checked"
+                  @click="changeChecked(index)"
+                />
+                <span>{{item.content}}</span>
+              </label>
+              <a href="#" class="delete" @click="delTodo(index)"></a>
+            </li>
+          </ul>
+          <div class="list_footer">
+            <p><span class="todoNum"> {{todoNum}} </span> 個待完成項目</p>
+            <a href="#" class="delebtn" @click="delAll">清除已完成項目</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.38/vue.global.min.js"
+      integrity="sha512-HdUtlwGlOvElJxGY2Ef7wEIxHS0OUmEMc3u+jLQuKWYwPRmGc0SGSOKJzC7uOIKNtgTRkjXQ03CGwtooY65Seg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
